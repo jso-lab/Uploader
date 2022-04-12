@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annonces index{% endblock %}
+
+{% block body %}
+
+<main class="container py-5">
+    <h1>Toutes les annonces</h1>
+
+    <table class="table table-hover">
+        <caption>Liste des annonces</caption>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for annonce in annonces %}
+            <tr>
+                <td>{{ annonce.id }}</td>
+                <td>{{ annonce.title }}</td>
+                <td>{{ annonce.content }}</td>
+                <td>
+                    <a href="{{ path('app_annonces_show', {'id': annonce.id}) }}">show</a>
+                    <a href="{{ path('app_annonces_edit', {'id': annonce.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_annonces_new') }}">Create new</a>
+
+</main>
+{% endblock %}

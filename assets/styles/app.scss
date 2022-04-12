@@ -1,0 +1,18 @@
+@import 'custom';
+@import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300&family=Unica+One&family=Varela+Round&display=swap');
+
+h1 {
+	font-family: 'Unica One', cursive;
+}
+
+h2,
+h3,
+h4,
+h5 {
+	font-family: 'Varela Round', sans-serif;
+}
+
+p {
+	font-family: 'Signika Negative', sans-serif;
+}

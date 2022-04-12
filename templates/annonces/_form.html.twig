@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+
+    {# Vérifier si la route est "annonces_edit" on affiche les images #}
+    {% if app.request.attributes.get('_route') == 'app_annonces_edit' %}
+        <h2 class="mx-3">Images</h2>
+        {% for image in annonce.images %}
+            <div>
+                <img class="m-3" src="{{ asset('/uploads/' ~ image.name) }}" alt="images" width="200"/>
+                <a href="{{ path('app_annonces_delete_image', {'id': image.id}) }}"
+                data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer</a>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/images.js') }}"></script>
+{% endblock %}
